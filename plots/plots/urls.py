@@ -24,11 +24,13 @@ from django.conf.urls.i18n import i18n_patterns
 urlpatterns = [
    
     #path('admin/', admin.site.urls),
+    
     path('', include('plots_global.urls')),
-     path("i18n/", include("django.conf.urls.i18n")),
+     
     # path(r'^reports/', include('scaffold_report.urls')),
     # path('', views.home, name='home'),
     path('dashboard/', include('dashboard.urls')),
     path('report_builder/', include('report_builder.urls')),
+    path("i18n/", include("django.conf.urls.i18n")),
 ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-urlpatterns+=i18n_patterns(path('admin/', admin.site.urls))
+urlpatterns += i18n_patterns(path("admin/", admin.site.urls))
