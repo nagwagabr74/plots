@@ -1,0 +1,16 @@
+{% extends "plots_global/base.html" %}
+{% block content %}
+    {% for unitdata in object_list %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ task.sender }}</a>
+              <small class="text-muted">{{ task.date_received|date:"F d, Y" }}</small>
+              <a class="mr-2" href="#">{{ task.status }}</a>
+            </div>
+            <h4 style= "text-align: right"><a class="article-title" href="#">{{ unitdata.title }}</a></h4>
+            <p class="article-content" style= "text-align: right">{{ unitdata.content }}</p>
+          </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

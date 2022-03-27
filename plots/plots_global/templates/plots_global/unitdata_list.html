@@ -1,0 +1,17 @@
+{% extends 'plots_global/base.html' %}
+
+{% block content %}
+<ul class="list-group">
+  {% for item in SpecificationUnitsData_list %}
+  <li class="list-group-item">
+      <span class="text-primary">رقم الوحدة: </span> <span>{{ item.SpecificationUnitsData_list.UnitNumber }}</span>
+      <br>
+      <span class="text-primary">اسم المالك: </span><span>{{ item.SpecificationUnitsData_list.OwnerUnit }}</span>
+      <br>
+      
+      {% comment %} <a class="btn btn-primary btn-sm active" role="button" href="#">Reviews</a></li> {% endcomment %}
+
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}
