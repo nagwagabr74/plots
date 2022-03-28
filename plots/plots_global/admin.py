@@ -35,9 +35,9 @@ class ActivitiesAdmin(ImportExportModelAdmin):
 
 @admin.register(SpecificationUnitsData)
 class SpecificationUnitsDataAdmin(ImportExportModelAdmin):
-    list_per_page = 11
-    search_fields = ['OwnerUnit__icontains']    
-    list_display = ('OwnerUnit','LandOperatingStatus','HandedDate','SubActivity',) 
+    list_per_page = 50
+    search_fields = ['OwnerUnit__icontains','GoverneratesId__GovernerateName__icontains','UnitNumber__icontains','CompoundId__CompoundName__icontains']    
+    list_display = ('UnitNumber','CompoundId','GoverneratesId','OwnerUnit','LandOperatingStatus','HandedDate','SubActivity',) 
     list_filter=('GoverneratesId','CompoundId','LandOperatingStatus','LegalEntity','CompoundId')
     # readonly_fields = ('GoverneratesId','CompoundId','UnitNumber','OwnerUnit','LegalEntity')
     
@@ -61,9 +61,9 @@ class SpecificationUnitsDataAdmin(ImportExportModelAdmin):
             AppendFields=['DueServices','DueServices','Has_Finance']
              
    
-            for field in AppendFields :
-                    if field not in main:
-                        main.append(field)
+        for field in AppendFields :
+                if field not in main:
+                     main.append(field)
         self.fields=main
         return super(SpecificationUnitsDataAdmin, self).change_view(request,object_id )
 
