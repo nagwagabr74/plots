@@ -1,25 +1,21 @@
 from django.shortcuts import render
 from .models import SpecificationUnitsData
+from django.views.generic import (
+CreateView,
+DetailView,
+ListView,
+DeleteView,
+UpdateView,
+FormView
+)
+from  django.views.generic.detail import  SingleObjectMixin
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
-def SpecificationUnitsData_list(request):
-    specificationUnitsData = SpecificationUnitsData.objects.all()
-    specificationUnitsData_list = []
-    for unitdata in specificationUnitsData:
-        specificationUnitsData_list.append({"specificationUnitsData": specificationUnitsData})
-    context = {
-        "SpecificationUnitsData_list": specificationUnitsData_list
-    }
-    return render(request, "plots_global/unitdata_list.html", context)
-
-
-
-def home(request):
-       
-    context = {
-        'unitdata': SpecificationUnitsData.objects.all()
-
-    }
-    return render(request, 'plots_global/home.html', context)
-
+class UnitListView(LoginRequiredMixin,ListView):
+    model=SpecificationUnitsData
+    template_name="plots_global/unitdata_list.html"
+    queryset=SpecificationUnitsData.objects.all()
+    
+ 
