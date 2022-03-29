@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'phone_field',
     'import_export',
     'plots_global',
-    
+    'crispy_forms',
+    'django_tables2',
     'scaffold_report',
     
     
