@@ -5,6 +5,6 @@ from . import views
 urlpatterns = [
 
     # path('', views.home, name='home'),
-    path('', views.SpecificationUnitsData_list, name='UnitsData'),
+    path('', views.UnitListView.as_view(), name='UnitsData'),
     
 ]
