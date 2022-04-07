@@ -1,108 +1,160 @@
 {% load static %}
 <!DOCTYPE html>
-<html>
-<head>
-
+<html language='ar-eg'>
+    <head>
         <title>
-          {% block title %}
-        {% endblock title %}
+            {% block title %}
+            {% endblock title %}
         </title>
-       
-        <meta charset="utf-8">
+        <meta charset="utf-16">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        {% comment %} <meta http-equiv=â€œX-UA-Compatibleâ€ content=â€œIE=edgeâ€> {% endcomment %}
-        <!-- favicons -->
-        {% comment %} <link rel="apple-touch-icon" sizes="180x180" href="{% static 'news/images/favicons/apple-touch-icon.png' %}">
-        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'tasks/images/favicons/favicon-32x32.png' %}" >
-        <link rel="icon" type="image/png" sizes="16x16" href= "{% static 'tasks/images/favicons/favicon-16x16.png' %}">
-        <link rel="manifest" href= "{% static 'tasks/images/favicons/site.webmanifest' %}">
-        <meta name="msapplication-TileColor" content="#da532c">
-        <meta name="theme-color" content="#ffffff"> {% endcomment %}
-        <!-- favicons -->
         {% block stylesheet %}
-            <link href="{% static 'tasks/styles/bootstrap.css' %}" rel="stylesheet" type="text/css">
-            <link href="{% static 'tasks/styles/animate.css' %}" rel="stylesheet" type="text/css">
-            <link href="{% static 'tasks/styles/style.css' %}" rel="stylesheet" type="text/css">
-            <link href="{% static 'tasks/styles/custom-responsive-style.css' %}" rel="stylesheet" type="text/css">
-            <link href="{% static 'tasks/fonts/fontawesome5.15.2/css/all.css' %}" rel="stylesheet" type="text/css">  
-            <link href="{% static 'tasks/styles/webslidemenu.css' %}" rel="stylesheet" type="text/css">
-
-         {% endblock %}
-  
-    {% block header %}
-    </head>
-    <!-- Header starts here -->
-    <header id="Header">
-      <nav class="navbar navbar-expand-sm navbar-light">
-        <a href="#" class="navbar-brand logo"><img src="{% static 'tasks/images/logo.png' %}" width="300"  alt="" id="logo" /></a>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-              <ul class=" navbar-nav justify-content-start">
-                <li class="nav-item"><small> مرحبا {{ user.username }}</li>
-              </ul>
-          </div>
-      </nav>
-
-  {% endblock header %}
-</header>
-{% block body %}
-<body  data-media-url="{% get_media_prefix %}">
-
-      <!-- Banner starts here -->
-      <section id="HeroBanner" style="left: 0px; top: 0px">
-            <img src="{% static 'top_banner.jpg' %}" alt="" />
-                <div class="item">
-                  <div class="container">
-                      <h1 class="h1 display-2 text-secondary text-xl-center" style="vertical-align:bottom;"> برنامج  الوحدات الصناعية</h1>
-                </div>
-      <nav  class="navbar navbar-expand-sm shift navbar-light" style="margin-top:20px;" >   
-     
-    
-        
-          <div class="btn-group">
-                <button class="btn btn-info btn-lg" type="button">أدخال</button>
-                <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only"></span>
-                </button>
-                <div class="dropdown-menu">
-                   <li><a class="dropdown-item" href="http://127.0.0.1:8000/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a></li>
-                </div>
-          </div> 
-                <div class="btn-group">
-                <button class="btn btn-info btn-lg" type="button">التقارير</button>
-                <button type="button" class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  <span class="sr-only"></span>
-                </button>
-
-                <div class="dropdown-menu">                  
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/">DashBoard</a></li>
-                  <li><a class="dropdown-item" href="http://127.0.0.1:8000/report_builder/">Report Builder</a></li>
-
-                </div>
-          </div>    
-    </nav>
-    </section>
-        <section class="container-fluid"  style="box-shadow: 10px 10px 5px grey; margin-bottom: 30px;">
-            <div class=" animate__animated  animate__zoomIn" style="padding:10px;">
-            {% block content%} 
-            {% endblock content %}
-            {% block results%} 
-            {% endblock results %}
-            </div>
-        </section>
-        
-        <footer class="orangeFooter" >
-              <div class="row">
-                    <div class="col-12"> <a href="#"  title="أعلى الصفحة" class=" scrollup">
-                        <i class='fas fa-caret-square-up' style='font-size:40px; color:rgba(255, 255, 255, 0.6);'></i></a>
-                        <p class="designed"> الهيئة العامة للتنمية الصناعية <script>document.write(new Date().getFullYear())</script></p>
+            <link href="{% static 'tasks/styles/bootstrap.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+            <link href="{% static 'tasks/styles/animate.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+            <link href="{% static 'tasks/styles/style.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+            <link href="{% static 'tasks/styles/custom-responsive-style.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+            <link href="{% static 'tasks/fonts/fontawesome5.15.2/css/all.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+            <link href="{% static 'tasks/styles/webslidemenu.css' %}"
+                  rel="stylesheet"
+                  type="text/css">
+        {% endblock %}
+        {% block header %}
+        </head>
+        <!-- Header starts here -->
+        <header id="Header">
+            <nav class="navbar navbar-expand-sm navbar-light">
+                <a href="#" class="navbar-brand logo">
+                    <img src="{% static 'tasks/images/logo.png' %}"
+                         width="300"
+                         alt=""
+                         id="logo"/>
+                </a>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class=" navbar-nav justify-content-start">
+                        <li class="nav-item">
+                            <small> مرحبا {{ user.username }}
+                            </li>
+                        </ul>
                     </div>
-              </div>
-      </div>
-    </div>
-  </footer>
-  </div>
- {% endblock body %}
-  {%block script%}
+                </nav>
+            {% endblock header %}
+        </header>
+        {% block body %}
+            <body data-media-url="{% get_media_prefix %}">
+                <!-- Banner starts here -->
+                <section id="HeroBanner" style="left: 0px; top: 0px">
+                    <img src="{% static 'top_banner.jpg' %}" alt="" />
+                    <div class="item">
+                        <div class="container">
+                            <h1 class="h1 display-2 text-secondary text-xl-center"
+                                style="vertical-align:bottom;">برنامج  الوحدات الصناعية</h1>
+                        </div>
+                        <nav class="navbar navbar-expand-sm shift navbar-light"
+                             style="margin-top:20px;">
+                            <div class="btn-group">
+                                <button class="btn btn-info btn-lg" type="button">أدخال</button>
+                                <button type="button"
+                                        class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <span class="sr-only"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item"
+                                           href="http://127.0.0.1:8000/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a>
+                                    </li>
+                                </div>
+                            </div>
+                            <div class="btn-group">
+                                <button class="btn btn-info btn-lg" type="button">DashBoards</button>
+                                <button type="button"
+                                        class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <span class="sr-only"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item"  href="{% url 'pdf' %}" class="nav-link" target="blank">تقرير المجمعات الصناعية</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'chart_operations' %}">مخطط حالة تشغيل الوحدات</a>                                     
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="{% url 'chart_activities' %}">مخطط الانشطة الصناعية للوحدات</a>
+
+                                        <a class="dropdown-item" href="{% url 'chart_unitStatus' %}">  مخطط حالة الوحدات الصناعية</a>
+
+                                        
+                                    </li>
+
+                                </div>
+                            </div>
+                                                        <div class="btn-group">
+                                <button class="btn btn-info btn-lg" type="button">أدوات استخراج التقارير</button>
+                                <button type="button"
+                                        class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
+                                        data-toggle="dropdown"
+                                        aria-haspopup="true"
+                                        aria-expanded="false">
+                                    <span class="sr-only"></span>
+                                </button>
+                                <div class="dropdown-menu">
+                                    <li>
+                                        <a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/">DashBoard</a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="http://127.0.0.1:8000/report_builder/">Report Builder</a>
+                                    </li>
+                                </div>
+                            </div>
+                        </nav>
+                    </section>
+                    <section class="container-fluid"
+                             style="box-shadow: 10px 10px 5px grey;
+                                    margin-bottom: 30px;">
+                        <div class=" animate__animated  animate__zoomIn" style="padding:10px;">
+                        <pdf:language name="arabic"/>
+                            {% block content %}
+                            {% endblock content %}
+                            {% block results %}
+                            {% endblock results %}
+                        </div>
+                    </section>
+                    <footer class="orangeFooter">
+                        <div class="row">
+                            <div class="col-12">
+                                <a href="#"  title="أعلى الصفحة" class=" scrollup">
+                                    <i class='fas fa-caret-square-up'
+                                       style='font-size:40px;
+                                              color:rgba(255, 255, 255, 0.6);'></i></a>
+                                <p class="designed">
+                                    الهيئة العامة للتنمية الصناعية <script>document.write(new Date().getFullYear())</script>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    {% endblock body %}
+    {% block script %}
         <script type="text/javascript" src="{% static 'tasks/script/jquery-3.2.1.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'tasks/script/bootstrap.js' %}"></script>
         <script type="text/javascript" src="{% static 'tasks/script/all-plugins.js' %}"></script>
@@ -120,7 +172,6 @@
         }
         });
         {%endblock script%}
-          </script>
-</body>
-
+        </script>
+    </body>
 </html>

@@ -38,7 +38,7 @@ class SpecificationUnitsDataAdmin(ImportExportModelAdmin):
     list_per_page = 50
     search_fields = ['OwnerUnit__icontains','GoverneratesId__GovernerateName__icontains','UnitNumber__icontains','CompoundId__CompoundName__icontains']    
     list_display = ('UnitNumber','CompoundId','GoverneratesId','OwnerUnit','LandOperatingStatus','HandedDate','SubActivity',) 
-    list_filter=('GoverneratesId','CompoundId','LandOperatingStatus','LegalEntity','CompoundId')
+    list_filter=('Main_Activity','LandOperatingStatus','LegalEntity','CompoundId')
     # readonly_fields = ('GoverneratesId','CompoundId','UnitNumber','OwnerUnit','LegalEntity')
     
   
@@ -48,7 +48,7 @@ class SpecificationUnitsDataAdmin(ImportExportModelAdmin):
         main=['GoverneratesId','CompoundId','UnitNumber','OwnerUnit','LegalEntity','ContactNumber']
         
         if request.user.groups.filter(name="units").exists():  
-            AppendFields=['UnitsCount','UnitArea','TotalArea','Main_Activity','SpecificationDate','HandedDate','CommitteeNumber']
+            AppendFields=['UnitsCount','UnitArea','TotalArea','Main_Activity','LandOperatingStatus','SpecificationDate','HandedDate','CommitteeNumber']
    
         elif request.user.groups.filter(name="idc").exists():  
             AppendFields=['LandOperatingStatus','SubActivity','Has_Electric_Meter','Has_Water_Meter','Has_equipment','UnitProblems','UnitProblemsSolutions','UnitNotWorkReasons','UnitNotes']
@@ -58,7 +58,9 @@ class SpecificationUnitsDataAdmin(ImportExportModelAdmin):
            
 
         elif request.user.groups.filter(name="finance").exists():  
-            AppendFields=['DueServices','DueServices','Has_Finance']
+            AppendFields=['DuePriceOrrent','DueServices','Has_Finance']
+        else :
+            AppendFields=main
              
    
         for field in AppendFields :

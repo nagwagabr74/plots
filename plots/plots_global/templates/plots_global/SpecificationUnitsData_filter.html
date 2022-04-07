@@ -10,11 +10,11 @@
   </form>
   <br/>
   <a href="{% export_url 'xlsx'%}"> لتحميل النتائج في صورة  ملف اكسيل </a>
- 
+  <br/>
   
   
   {% endblock %}
-
+  
   <br/>
    {% block results %}
   <div class="card bg-light text-dark">
@@ -22,7 +22,7 @@
   <div class="card-body">
     
    
-    {% render_table filter.qs 'django_tables2/bootstrap.html' %}
+    {% render_table filter.qs 'django_tables2/bootstrap4.html' %}
     
   
   </div>

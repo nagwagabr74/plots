@@ -1,0 +1,43 @@
+{% comment %} {% extends 'plots_global/base.html' %} {% endcomment %}
+{% load crispy_forms_tags %}
+{% block content %}
+<button><a href="{% url 'chart_operationsPdf' %}">استخراج التقرير</a></button>
+
+    <div class="row d-flex contact-info">
+        <div class="">
+            <canvas id="myChart2" width="550" height="290"></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+  type: 'bar',
+    data: {
+        labels: ['شاغر','مخصص'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{working1_count}},{{working2_count}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+    </script>
+{% endblock %}

@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
 from pathlib import Path
-
+# os.add_dll_directory(r"C:\Program Files\GTK3-Runtime Win64\bin")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,14 +25,12 @@ SECRET_KEY = 'django-insecure-*j6-b3r4=xzu*e5b_xpj!ta1#8#5d1a6xmwl%%$fy(_*o5r=ox
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS= ['localhost','127.0.0.1:86','127.0.0.1','192.168.210.15:86','192.168.210.15']
+ALLOWED_HOSTS = []
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_interface',
-    'colorfield',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,33 +41,34 @@ INSTALLED_APPS = [
     'import_export',
     'plots_global',
     'crispy_forms',
+    # 'scaffold_report',
     'django_tables2',
-    'scaffold_report',
-    
-    
+    'wkhtmltopdf',
     'report_builder',
     'django_celery_beat',
     'report_builder_scheduled',
     'dashboard',
     'dbbackup',
+    'django_filters',
     
     
 ]
-
+WKHTMLTOPDF_CMD = {'location': BASE_DIR / 'templates'}
+WKHTMLTOPDF_CMD_OPTIONS = {
+    'quiet': True,
+}
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
-# only if django version >= 3.0
-X_FRAME_OPTIONS = 'SAMEORIGIN'
-SILENCED_SYSTEM_CHECKS = ['security.W019']
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    "django.middleware.locale.LocaleMiddleware",
 ]
 
 ROOT_URLCONF = 'plots.urls'
@@ -85,6 +84,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.template.context_processors.static',
+                
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -141,23 +141,13 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
-LANGUAGES = (
-    ('ar-eg', ('العربية')),
-  ('en-us', ('English')),
-  
-  
-  # more than one language is expected here
-)
-LANGUAGE_CODE = 'ar-eg'
+LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'Africa/Cairo'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
-USE_L10N = True
-
 USE_TZ = True
-
 
 
 # Static files (CSS, JavaScript, Images)
@@ -165,8 +155,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(
-    os.path.dirname(BASE_DIR), "static")
+
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -177,3 +166,4 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+ALLOWED_HOSTS= ['localhost','127.0.0.1:81','127.0.0.1','192.168.210.15:86','192.168.210.15','plots:86']

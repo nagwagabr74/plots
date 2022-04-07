@@ -1,0 +1,63 @@
+{% extends 'plots_global/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<button><a href="{% url 'chart_operationsPdf' %}">استخراج التقرير</a></button>
+
+    <div class="row d-flex contact-info">
+        <div class="center-block text-center" style="width:75%; max-width:65vw;">
+            <canvas id="myChart2" ></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+  type: 'bar',
+    data: {
+        labels: ['استيفاء مالى','استيفاء اقتصادى','استيفاء مستندات','تحت التجهيز','تشغيل متقطع','جارى الاستلام','جارى السحب','لا يعمل','لم يتم الاستلام','مخزن','مغلق','يعمل','	شاغرة'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{working1_count}},{{working2_count}},{{working3_count}},{{working4_count}},{{working5_count}},{{working6_count}},{{working7_count}},{{working8_count}},{{working9_count}},{{working10_count}},{{working11_count}},{{working12_count}},{{working13_count}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+    </script>
+{% endblock %}

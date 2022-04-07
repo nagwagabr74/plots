@@ -84,9 +84,9 @@ class SpecificationUnitsData(models.Model):
     UnitsCount=models.PositiveIntegerField("عدد الوحدات ",default=0 ,blank=False, null=False)
     UnitArea=models.PositiveIntegerField(" مساحة الوحدة",default=0 ,blank=False, null=False,help_text=" مساحة الوحدة  ")
     TotalArea=models.PositiveIntegerField(" إجمالي المساحة المخصصة",default=0 ,blank=False, null=False,help_text=" إجمالي المساحة المخصصة") 
-    Main_Activity=models.ForeignKey( Activities, verbose_name=("كود القطاع الصناعى"),on_delete=models.DO_NOTHING, null=True)
+    Main_Activity=models.ForeignKey( Activities, verbose_name=("كود القطاع الصناعى"),on_delete=models.DO_NOTHING, null=True,blank=False)
     RequestNumber=models.PositiveIntegerField(" رقم الطلب ",default=0 ,blank=False, null=False)
-    OwnerUnit=models.CharField("اسم المالك", max_length=150,null=True,blank=True)
+    OwnerUnit=models.CharField("اسم المالك", max_length=300,null=True,blank=True)
     LegalEntity=models.ForeignKey(LegalEntity,verbose_name=("كود الكيان القانونى"), on_delete=models.DO_NOTHING,null=True,blank=True)
     CommitteeNumber=models.PositiveIntegerField(" رقم اللجنة ",default=0 ,blank=False, null=False)
     SpecificationDate=models.DateField("تاريخ تخصيص الوحدة",null=True,blank=True)
@@ -118,7 +118,7 @@ class SpecificationUnitsData(models.Model):
     
     
     def __str__(self):
-        return self.OwnerUnit
+        return self.OwnerUnit or ''
     class Meta(object):
         ordering = ['UnitNumber']
         verbose_name_plural="بيانات الوحدة المخصصة"

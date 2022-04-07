@@ -645,7 +645,7 @@ screen and (max-height:300px) {
 }
 
 body {
-    font-family: 'noto_kufi_arabicregular', Tahoma, sans-serif !important;
+    font-family: 'noto_kufi_arabicregular', Tahoma, Arial, sans-serif !important;
     /*font-size: 1.3rem;*/
     font-weight: 400px;
     line-height: 1.5;
@@ -1666,4 +1666,18 @@ h1 {
     /*margin:10px auto;*/
     padding: 5px;
     text-align: center;
+}
+
+#unitTable {
+    position: relative;
+    border-collapse: collapse;
+}
+
+.sticky {
+    vertical-align: center !important;
+    position: sticky !important;
+    position: -webkit-sticky;
+    top: 0px;
+    z-index: 1;
+    box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.4);
 }

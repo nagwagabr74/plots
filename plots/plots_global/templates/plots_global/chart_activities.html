@@ -1,0 +1,59 @@
+{% extends 'plots_global/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<button><a href="{% url 'chart_activitiesPdf' %}">استخراج التقرير</a></button>
+    <div class="row d-flex contact-info">
+
+        <div class="center-block text-center" style="width:75%; max-width:65vw;">
+            <canvas id="myChart2" ></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+  {% comment %} type: 'doughnut', {% endcomment %}
+   type: 'polarArea',
+    data: {
+        labels: ['تعدين','جلود','دوائى','غذائي','غزل ونسيج','قوى','كيماوى','معدنى','هندسي'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{activities1_count}},{{activities2_count}},{{activities3_count}},{{activities4_count}},{{activities5_count}},{{activities6_count}},{{activities7_count}},{{activities8_count}},{{activities9_count}}],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+    </script>
+{% endblock %}

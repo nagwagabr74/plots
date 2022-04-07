@@ -1,0 +1,51 @@
+{% extends 'plots_global/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<button><a href="{% url 'chart_activitiesPdf' %}">استخراج التقرير</a></button>
+    <div class="row d-flex contact-info">
+        <form method="GET"  >
+            {% csrf_token %} 
+            {{form.as_p}}
+            
+           <input type='submit' value ="بحث"  class="btn btn-lg btn-info"/>
+           </form>
+        <div class="center-block text-center" style="width:75%; max-width:65vw;">
+            <canvas id="myChart2" ></canvas>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+    <script>
+
+const ctx2 = document.getElementById('myChart2').getContext('2d');
+const myChart2 = new Chart(ctx2, {
+   type: 'pie',
+    data: {
+        labels: ['شاغرة','مخصصة'],
+        datasets: [{
+            label: '# of Votes',
+            data: [{{working1_count}},{{working2_count}}],
+            backgroundColor: [
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+             
+            ],
+            borderColor: [
+                'rgba(255, 159, 64, 1)',
+                'rgba(54, 162, 235, 1)',
+               
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+
+
+    </script>
+{% endblock %}
