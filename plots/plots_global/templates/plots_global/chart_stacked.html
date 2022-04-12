@@ -1,0 +1,66 @@
+{% extends 'plots_global/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<button>
+    <a href="{% url 'chart_activitiesPdf' %}">استخراج التقرير</a>
+</button>
+<div class="row d-flex contact-info">
+    <form method="GET">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value="بحث" class="btn btn-lg btn-info" />
+    </form>
+    <div class="center-block text-center" style="width:75%; max-width:65vw;">
+        <canvas id="StackedChart"></canvas>
+    </div>
+    
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+<script>
+$(document).ready(function() {
+    
+    $.ajax({
+      url: "/stacked",
+      type: "GET",
+      dataType: "json",
+      success: (jsonResponse) => {
+        
+        // Extract data from the response
+        const title = jsonResponse.title;
+        const labels = jsonResponse.data.labels;
+        const datasets = jsonResponse.data.datasets;
+
+        // Reset the current chart
+        salesChart.data.datasets = [];
+        salesChart.data.labels = [];
+
+        // Load new data into the chart
+        salesChart.options.title.text = title;
+        salesChart.options.title.display = true;
+        salesChart.data.labels = labels;
+        datasets.forEach(dataset => {
+            salesChart.data.datasets.push(dataset);
+        });
+        salesChart.update();
+      },
+      error: () => console.log("Failed to fetch chart filter options!")
+    });
+  });
+
+   
+</script>
+
+
+
+
+
+<script>  let salesCtx = document.getElementById("StackedChart").getContext("2d");
+    let salesChart = new Chart(salesCtx, {
+        type: "bar",
+        options: {
+            responsive: true,
+        }
+    });
+    
+</script>
+{% endblock %}

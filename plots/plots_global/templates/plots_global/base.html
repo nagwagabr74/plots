@@ -30,6 +30,8 @@
             <link href="{% static 'tasks/styles/webslidemenu.css' %}"
                   rel="stylesheet"
                   type="text/css">
+                  <script type="text/javascript" src="{% static 'tasks/script/jquery-3.2.1.min.js' %}"></script>
+
         {% endblock %}
         {% block header %}
         </head>
@@ -60,7 +62,7 @@
                     <div class="item">
                         <div class="container">
                             <h1 class="h1 display-2 text-secondary text-xl-center"
-                                style="vertical-align:bottom;">برنامج  الوحدات الصناعية</h1>
+                                style="vertical-align:bottom;">متابعة الوحدات الصناعية</h1>
                         </div>
                         <nav class="navbar navbar-expand-sm shift navbar-light"
                              style="margin-top:20px;">
@@ -76,7 +78,7 @@
                                 <div class="dropdown-menu">
                                     <li>
                                         <a class="dropdown-item"
-                                           href="http://127.0.0.1:8000/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a>
+                                           href="http://192.168.210.15:86/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a>
                                     </li>
                                 </div>
                             </div>
@@ -117,10 +119,10 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="http://127.0.0.1:8000/dashboard/">DashBoard</a>
+                                        <a class="dropdown-item" href="http://192.168.210.15:86/dashboard/">DashBoard</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="http://127.0.0.1:8000/report_builder/">Report Builder</a>
+                                        <a class="dropdown-item" href="http://192.168.210.15:86/report_builder/">Report Builder</a>
                                     </li>
                                 </div>
                             </div>
@@ -155,7 +157,6 @@
         </div>
     {% endblock body %}
     {% block script %}
-        <script type="text/javascript" src="{% static 'tasks/script/jquery-3.2.1.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'tasks/script/bootstrap.js' %}"></script>
         <script type="text/javascript" src="{% static 'tasks/script/all-plugins.js' %}"></script>
         <script type="text/javascript" src="{% static 'tasks/script/plugin-active.js' %}"></script>
@@ -171,7 +172,7 @@
           $('nav').removeClass('newNav');
         }
         });
-        {%endblock script%}
+        {% endblock script %}
         </script>
     </body>
 </html>

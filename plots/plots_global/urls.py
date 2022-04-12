@@ -15,6 +15,13 @@ urlpatterns = [
     path('operations', views.chart_operations, name='chart_operations'),
     path('activities', views.chart_activities, name='chart_activities'),
     path('unitStatus', views.Chart_unitStatus.as_view(), name='chart_unitStatus'),
+    path('stacked', views.stacked_chart, name='stacked_chart'),
+    path('stat', views.statistics_view, name='stat'),
+
+    
+
+
+
 
     path('doc', views.GeneratePdf.as_view(), name='pdf'),
     path('activitiesPdf', views.chart_activitiesPdf.as_view(), name='chart_activitiesPdf'),
