@@ -4,20 +4,22 @@
 {% load django_tables2 %}
 {% block content %}
     <form method="get">
+        
        
-        {{ filter.form |crispy }}
-        <button type="submit" class="btn btn-info btn-lg">Search</button>
+        {{ filter.form}}
+        <button type="submit" class="btn btn-info btn-lg">بحث</button>
     </form>
     <br />
-    <a href="{% export_url 'xlsx' %}">لتحميل النتائج في صورة  ملف اكسيل</a>
+    <a href="{% export_url 'xlsx' %}" class="btn btn-outline-secondary mb-3">لتحميل النتائج في صورة  ملف اكسيل</a>
 {% endblock %}
 <br />
+<br/>
 {% block results %}
-    <div class="card bg-light text-dark">
-        <div class="card-header bg-secondary text-white">
+
+        <div class="card-header bg-secondary text-white" >
             <h3>نتائج البحث</h3>
         </div>
-        <div class="table-responsive">
+  
             <table class="table table-striped table-bordered table-sm text-wrap" id="unitTable">
                 <thead class="table-secondary sticky">
                    
@@ -106,16 +108,16 @@
                             <td>
                                 {% if unit.OperatingLicense %}
                                    
-                                    <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <i class="fa fa-square-o text-danger" style="font-size:14px;"></i>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if unit.industrialRegistry %}
                                     <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <i class="fa fa-square-o text-danger" style="font-size:14px;"></i>
+                                    <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
@@ -126,30 +128,30 @@
                             </td>
                             <td>
                                 {% if unit.DeclarationModification %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if unit.Has_Water_Meter %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if unit.Has_Electric_Meter %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
                                 {% if unit.Has_equipment %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
@@ -163,9 +165,9 @@
                             </td>
                             <td>
                                 {% if unit.Has_Finance %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
@@ -182,9 +184,9 @@
                             </td>
                             <td>
                                 {% if unit.AttendMeeting %}
-                                    <input class="form-check-input" type="checkbox" checked>
+                                <i class="fa fa-check-square text-success" style="font-size:14px;"></i>
                                 {% else %}
-                                    <input class="form-check-input" type="checkbox" disabled>
+                                <i class="fas fa-window-close text-danger" style="font-size:14px;"></i>
                                 {% endif %}
                             </td>
                             <td>
@@ -203,7 +205,7 @@
                     {% endfor %}
                 </tbody>
             </table>
-        </div>
+
         <!-- /*##################*/-->
         {% if is_paginated %}
 				<div class="row mt-5">
@@ -213,7 +215,7 @@
 								{% if page_obj.has_previous %}
 									<li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">&lt;</a></li>
 								{% else %}
-									<li class="page-item disabled"><span>  &laquo;</span></li>
+									<li class="page-item disabled"><span class="page-link">  &laquo;</span></li>
 								{% endif %}
 
 								{% for i in paginator.page_range %}
@@ -234,5 +236,5 @@
 					</div>
 				</div>
 				{% endif %}
-			</div> <!-- .col-md-8 -->
+
     {% endblock %}

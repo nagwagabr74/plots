@@ -24,15 +24,14 @@ urlpatterns = [
 
 
     path('doc', views.GeneratePdf.as_view(), name='pdf'),
+
+    
     path('activitiesPdf', views.chart_activitiesPdf.as_view(), name='chart_activitiesPdf'),
     path('operationsPdf', views.chart_operationsPdf.as_view(), name='chart_operationsPdf'),
 
     path('unitStatusPdf', views.chart_operationsPdf.as_view(), name='chart_unitStatusPdf'),
 
 
-    path('ss', PDFTemplateView.as_view(template_name='plots_global/unitdata_list2.html',
-                                           filename='my_pdf.pdf'), name='pdf1'),
-    path('my-pdf', PDFView.as_view(template_name='plots_global/unitdata_list2.html'), name='my-pdf'),
 
 
 

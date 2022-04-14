@@ -1,18 +1,48 @@
 <html>
     <head>
         <title>Test</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@900&display=swap" rel="stylesheet">
         <style>
+           @font-face {
+    font-family: 'Markazi Text';
+    src: url('../fonts/MarkaziText-Regular.ttf') format('truetype');
+    font-weight: bolder;
+    font-style: normal;
+}
     body {
       background-color: #f7f7f7;
     }
+    P{font-family: 'Markazi Text', 'Cairo', sans-serif;}
+    pdftoc {
+    color: #666;
+}
+pdftoc.pdftoclevel0 {
+    font-weight: bold;
+    margin-top: 0.5em;
+}
+pdftoc.pdftoclevel1 {
+    margin-left: 1em;
+}
+pdftoc.pdftoclevel2 {
+    margin-left: 2em;
+    font-style: italic;
+}
+table {    -pdf-keep-in-frame-mode: shrink;}
         </style>
     </head>
     <body>
+        <h1 class="text-info">تقرير</h1>
+        <div>
+            <pdf:language name="arabic"/>
         <h1>Test Template</h1>
+        <pdf:toc />
         {% for paragraph in paragraphs %}
             <p>
                 {{ paragraph }}
             </p>
         {% endfor %}
+    </div>
     </body>
 </html>

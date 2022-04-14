@@ -67,7 +67,7 @@
                         <nav class="navbar navbar-expand-sm shift navbar-light"
                              style="margin-top:20px;">
                             <div class="btn-group">
-                                <button class="btn btn-info btn-lg" type="button">أدخال</button>
+                                <button class="btn btn-info btn-lg" type="button">إدخال</button>
                                 <button type="button"
                                         class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown"
@@ -78,12 +78,13 @@
                                 <div class="dropdown-menu">
                                     <li>
                                         <a class="dropdown-item"
-                                           href="http://192.168.210.15:86/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a>
+                                        
+                                           href="http://192.168.210.15:86/ar-eg/admin/plots_global/specificationunitsdata/">  بيانات الوحدات المخصصة </a>
                                     </li>
                                 </div>
                             </div>
                             <div class="btn-group">
-                                <button class="btn btn-info btn-lg" type="button">DashBoards</button>
+                                <button class="btn btn-info btn-lg" type="button">المخططات البيانية</button>
                                 <button type="button"
                                         class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown"
@@ -93,15 +94,15 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item"  href="{% url 'pdf' %}" class="nav-link" target="blank">تقرير المجمعات الصناعية</a>
+                                        <a class="dropdown-item"  href="{% url 'pdf' %}" class="nav-link" target="blank">البيانات التفصيلية</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'chart_operations' %}">مخطط حالة تشغيل الوحدات</a>                                     
+                                        <a class="dropdown-item" href="{% url 'chart_operations' %}">مخطط حالة التشغيل </a>                                     
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="{% url 'chart_activities' %}">مخطط الانشطة الصناعية للوحدات</a>
+                                        <a class="dropdown-item" href="{% url 'chart_activities' %}">مخطط الانشطة الصناعية </a>
 
-                                        <a class="dropdown-item" href="{% url 'chart_unitStatus' %}">  مخطط حالة الوحدات الصناعية</a>
+                                        <a class="dropdown-item" href="{% url 'chart_unitStatus' %}">مخطط حالة التخصيص </a>
 
                                         
                                     </li>
@@ -109,7 +110,7 @@
                                 </div>
                             </div>
                                                         <div class="btn-group">
-                                <button class="btn btn-info btn-lg" type="button">أدوات استخراج التقارير</button>
+                                <button class="btn btn-info btn-lg" type="button">التقارير</button>
                                 <button type="button"
                                         class="btn btn-lg btn-info dropdown-toggle dropdown-toggle-split"
                                         data-toggle="dropdown"
@@ -119,10 +120,10 @@
                                 </button>
                                 <div class="dropdown-menu">
                                     <li>
-                                        <a class="dropdown-item" href="http://192.168.210.15:86/dashboard/">DashBoard</a>
+                                        <a class="dropdown-item" href="{% url 'stat' %}">المخططات</a>
                                     </li>
                                     <li>
-                                        <a class="dropdown-item" href="http://192.168.210.15:86/report_builder/">Report Builder</a>
+                                        <a class="dropdown-item" href="http://sli0004/Reports/browse/">تقارير اجمالية</a>
                                     </li>
                                 </div>
                             </div>

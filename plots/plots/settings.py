@@ -25,13 +25,14 @@ SECRET_KEY = 'django-insecure-*j6-b3r4=xzu*e5b_xpj!ta1#8#5d1a6xmwl%%$fy(_*o5r=ox
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS= ['localhost','127.0.0.1:86','127.0.0.1','192.168.210.15:86','192.168.210.15','landplots:86']
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.admin',
+    'admin_interface',
+    
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -42,6 +43,7 @@ INSTALLED_APPS = [
     'plots_global',
     'crispy_forms',
     # 'scaffold_report',
+    'colorfield',
     'django_tables2',
     'wkhtmltopdf',
     'report_builder',
@@ -50,6 +52,7 @@ INSTALLED_APPS = [
     'dashboard',
     'dbbackup',
     'django_filters',
+    'django.contrib.admin',
     
     
 ]
@@ -59,7 +62,9 @@ WKHTMLTOPDF_CMD_OPTIONS = {
 }
 DBBACKUP_STORAGE = 'django.core.files.storage.FileSystemStorage'
 DBBACKUP_STORAGE_OPTIONS = {'location': BASE_DIR / 'backup'}
-
+# only if django version >= 3.0
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+SILENCED_SYSTEM_CHECKS = ['security.W019']
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -140,21 +145,30 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
+LANGUAGES = (
+    ('ar-eg', 'العربية'),
+  ('en-us', 'English'),
+  
+  
+  # more than one language is expected here
+)
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = ('ar-eg')
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Africa/Cairo'
 
 USE_I18N = True
 
-USE_TZ = True
+USE_L10N = True
 
+USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-
+STATIC_ROOT = os.path.join(
+    os.path.dirname(BASE_DIR), "static")
 
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')

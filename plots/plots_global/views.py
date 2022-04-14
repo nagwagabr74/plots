@@ -38,7 +38,8 @@ class UnitListView(FilterView,ExportMixin,SingleTableView,ListView):
     
     count = SpecificationUnitsData.objects.count()
     paginate_by = 70
-  
+
+    
     
     
 class UnitsDataFilter(FilterView,ExportMixin,SingleTableView):
@@ -201,24 +202,6 @@ class chart_operationsPdf(View):
             pdf = render_to_pdf('plots_global/unitdata_list.html',data)
             return HttpResponse(pdf, content_type='application/pdf')    
         
-        
-from wkhtmltopdf.views import PDFTemplateView
-
-
-class MyPDF(PDFTemplateView):
-    def get(self, request, *args, **kwargs):
-        unitsdata = SpecificationUnitsData.objects.all()
-        data = {    
-                'unitsdata': unitsdata ,
-                'request': request
-            }
-    filename = 'my_pdf.pdf'
-    template_name = 'plots_global/unitdata_list2.html'
-
-    options = {
-            'page-size': 'A3',
-            'encoding': "UTF-8",
-        }
 ##############################################################
 
 
@@ -274,7 +257,6 @@ def generate_color_palette(amount):
 
 # @staff_member_required
 def stacked_chart(request):
-    # units = SpecificationUnitsData.objects.filter(CompoundId__CompoundName=cname)
     grouped_units = SpecificationUnitsData.objects.all().values('CompoundId').annotate(count=Count('pk'))\
         .values('CompoundId', 'count').order_by('CompoundId')
 
@@ -282,9 +264,6 @@ def stacked_chart(request):
 
     for compound in Compound.objects.all().values_list('CompoundName',flat=True):
         cname_dict[str(compound)] = 0
-
-    # for group in grouped_units:
-    #     cname_dict[dict(Compound.objects.all())[group['CompoundId']]] = group['count']
 
     return JsonResponse({
        'title': 'عدد الوحدات بكل مجمع ',

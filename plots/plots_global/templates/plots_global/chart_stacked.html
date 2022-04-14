@@ -31,17 +31,17 @@ $(document).ready(function() {
         const datasets = jsonResponse.data.datasets;
 
         // Reset the current chart
-        salesChart.data.datasets = [];
-        salesChart.data.labels = [];
+        StackedChart.data.datasets = [];
+        StackedChart.data.labels = [];
 
         // Load new data into the chart
-        salesChart.options.title.text = title;
-        salesChart.options.title.display = true;
-        salesChart.data.labels = labels;
+        StackedChart.options.title.text = title;
+        StackedChart.options.title.display = true;
+        StackedChart.data.labels = labels;
         datasets.forEach(dataset => {
-            salesChart.data.datasets.push(dataset);
+            StackedChart.data.datasets.push(dataset);
         });
-        salesChart.update();
+        StackedChart.update();
       },
       error: () => console.log("Failed to fetch chart filter options!")
     });
@@ -54,12 +54,20 @@ $(document).ready(function() {
 
 
 
-<script>  let salesCtx = document.getElementById("StackedChart").getContext("2d");
-    let salesChart = new Chart(salesCtx, {
+<script>  let compoundCtx = document.getElementById("StackedChart").getContext("2d");
+    let StackedChart = new Chart(compoundCtx, {
         type: "bar",
         options: {
             responsive: true,
-        }
+        },
+        scales : {
+                    xAxes: [{
+                        stacked: true,
+                    }],
+                    yAxes: [{
+                        stacked: true
+                    }]
+                }
     });
     
 </script>
